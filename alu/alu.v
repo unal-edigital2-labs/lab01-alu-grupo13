@@ -55,7 +55,7 @@ always @(*) begin
 	case(opcode) 
 		2'b00:  begin negat = 1'b1; int_bcd = {1'b0, portA, 1'b0, portB, 4'b0000,sal_suma}; end 
 		2'b01:  begin negat = negative; int_bcd = {1'b0, portA, 1'b0, portB, 4'b0000,sal_resta};end 
-		2'b10:  begin negat = 1'b1; if(d == 1) begin int_bcd = {1'b0, portA, 1'b0, portB, 2'b00 ,sal_mult};end end
+		2'b10:  begin negat = 1'b1; if(d == 1) begin int_bcd = {1'b0, portA, 1'b0, portB,sal_mult[3:0], 2'b00 , sal_mult[5:4]};end end
 		2'b11:  begin negat = 1'b1; int_bcd = {1'b0, portA, 1'b0, portB, 4'b0000,sal_div};end
 	default:
 		int_bcd <= 0;
